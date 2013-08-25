@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{6EAA18CD-9804-4A28-844E-857BA96800CF}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="PixelBirthday.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\Database\Test\TestDataBase.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="PixelBirthday">
+			<MSBuild Projects="PixelBirthday.dproj"/>
+		</Target>
+		<Target Name="PixelBirthday:Clean">
+			<MSBuild Projects="PixelBirthday.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="PixelBirthday:Make">
+			<MSBuild Projects="PixelBirthday.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="TestDataBase">
+			<MSBuild Projects="..\Database\Test\TestDataBase.dproj"/>
+		</Target>
+		<Target Name="TestDataBase:Clean">
+			<MSBuild Projects="..\Database\Test\TestDataBase.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="TestDataBase:Make">
+			<MSBuild Projects="..\Database\Test\TestDataBase.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="PixelBirthday;TestDataBase"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="PixelBirthday:Clean;TestDataBase:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="PixelBirthday:Make;TestDataBase:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013-06-25 09:06:54.000.615,C:\Users\James Brown\Documents\RAD Studio\Projects\ProjectGroup1.groupproj=C:\Users\James Brown\Documents\RAD Studio\Projects\PixelBirthday\ProjectGroup1.groupproj</Transaction>
+    <Transaction>2013-06-25 14:08:33.000.601,C:\Users\James Brown\Documents\RAD Studio\Projects\PixelBirthday\HappyBirthdayPixel.groupproj=C:\Users\James Brown\Documents\RAD Studio\Projects\PixelBirthday\ProjectGroup1.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="C:\Users\James Brown\Documents\RAD Studio\Projects\PixelBirthday\PixelBirthday.dproj"/>
+	</Default.Personality>
+</BorlandProject>
