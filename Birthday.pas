@@ -40,9 +40,6 @@ type
     menuMain: TMainMenu;
     mnuHelp: TMenuItem;
     mnuAbout: TMenuItem;
-    seMAC6: TAbNumSpin;
-    seMAC5: TAbNumSpin;
-    seMAC4: TAbNumSpin;
     seMAC3: TAbNumSpin;
     seMAC2: TAbNumSpin;
     seMAC1: TAbNumSpin;
@@ -68,6 +65,9 @@ type
     cbPixelType: TComboBox;
     lblNote: TLabel;
     cbShieldType: TComboBox;
+    lbl3MAC: TLabel;
+    lblDash1: TLabel;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnConnectClick(Sender: TObject);
@@ -86,6 +86,8 @@ type
     procedure dsPixelsDataChange(Sender: TObject; Field: TField);
     function SpinnersToMAC: String;
     procedure seMAC1Change(Sender: TObject);
+    procedure navPixelsBeforeAction(Sender: TObject; Button: TNavigateBtn);
+    procedure gridPixelsColEnter(Sender: TObject);
   private
     { Private declarations }
 
@@ -215,9 +217,9 @@ begin
     if (Columns[0].Field.value <> null) then
     begin
       strMAC := Columns[0].Field.value;
-      seMAC6.ValueAsHex := Copy(strMAC, 1, 2);
-      seMAC5.ValueAsHex := Copy(strMAC, 4, 2);
-      seMAC4.ValueAsHex := Copy(strMAC, 7, 2);
+      // seMAC6.ValueAsHex := '54';
+      // seMAC5.ValueAsHex := '2F';
+      // seMAC4.ValueAsHex := '89';
       seMAC3.ValueAsHex := Copy(strMAC, 10, 2);
       seMAC2.ValueAsHex := Copy(strMAC, 13, 2);
       seMAC1.ValueAsHex := Copy(strMAC, 16, 2);
@@ -247,6 +249,11 @@ end;
 procedure TfrmBirthday.dsPixelsDataChange(Sender: TObject; Field: TField);
 begin
   FillMAC;
+end;
+
+procedure TfrmBirthday.gridPixelsColEnter(Sender: TObject);
+begin
+ // ShowMessage ('gridPixles ColEnter ');
 end;
 
 procedure TfrmBirthday.gridPixelsDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
@@ -350,6 +357,12 @@ begin
   end;
 end;
 
+procedure TfrmBirthday.navPixelsBeforeAction(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+// ShowMessage ('navPixels BefroeAction ');
+end;
+
 procedure TfrmBirthday.btnGenerateRandomClick(Sender: TObject);
 
 begin
@@ -365,9 +378,9 @@ begin
 
   seMAC2.value := random(256);
   seMAC3.value := random(256);
-  seMAC4.ValueAsHex := '89';
-  seMAC5.ValueAsHex := '2F';
-  seMAC6.ValueAsHex := '54';
+  // seMAC4.ValueAsHex := '89';
+  // seMAC5.ValueAsHex := '2F';
+  // seMAC6.ValueAsHex := '54';
 
   seMAC1Change(Sender);
 end;
@@ -377,38 +390,27 @@ function TfrmBirthday.SpinnersToMAC: String;
 var
   buttonSelected: Integer;
 begin
-  // FillMAC;
-  if (seMAC3.value > 16) then
-    strMAC := strMAC + seMAC3.Text
-  else
+  strMAC := '54' + '-' + '2F' + '-' + '89' + '-';
+  if (seMAC3.value < 16) then
   begin
     strMAC := strMAC + '0' + seMAC3.Text;
     seMAC3.Text := '0' + seMAC3.ValueAsHex;
   end;
-  strMAC := strMAC + '-';
+  strMAC := strMAC + seMAC3.Text + '-';
 
-  if (seMAC2.value > 16) then
-  begin
-    strMAC := strMAC + seMAC2.Text;
-  end
-  else
+  if (seMAC2.value < 16) then
   begin
     strMAC := strMAC + '0' + seMAC2.Text;
     seMAC2.Text := '0' + seMAC2.ValueAsHex;
   end;
-  strMAC := strMAC + '-';
+  strMAC := strMAC + seMAC2.Text + '-';
 
-  if (seMAC1.value > 16) then
-  begin
-    strMAC := strMAC + seMAC1.Text;
-    seMAC1.Text := '0' + seMAC1.ValueAsHex;
-  end
-  else
+  if (seMAC1.value < 16) then
   begin
     strMAC := strMAC + '0' + seMAC1.Text;
     seMAC1.Text := '0' + seMAC1.ValueAsHex;
   end;
-
+  strMAC := strMAC + seMAC1.Text;
   result := strMAC;
 end;
 
@@ -416,7 +418,7 @@ procedure TfrmBirthday.btnCreateBirthCertClick(Sender: TObject);
 var
   buttonSelected: Integer;
 begin
-   sbStatus.Panels[1].Text :='';
+  sbStatus.Panels[1].Text := '';
   btnCreateBirthCert.Enabled := False;
   // FillMAC;
   strMAC := '54';
@@ -470,8 +472,8 @@ begin
       Sleep(1000); // Wait for the connection to complete
     end;
   Except
-   sbStatus.Panels[1].Text :='Duplicate entry. Please try again.';
-     quPixels.Delete;
+    sbStatus.Panels[1].Text := 'Duplicate entry. Please try again.';
+    quPixels.Delete;
   end;
 end;
 
@@ -480,7 +482,8 @@ var
   strURLCheck: string;
 
 begin
-  strURLCheck := 'http://' + edURL.Text + '/php/getStatus.htm';
+// strURLCheck := 'http://' + edURL.Text + '/php/getStatus.htm';
+  strURLCheck :=  edURL.Text + '/php/getStatus.htm';
   ShellExecute(0, 'OPEN', PChar(strURLCheck), '', '', SW_SHOWNORMAL);
 end;
 
@@ -509,11 +512,12 @@ begin
     WriteLn(myFile, 'password = ' + edPassword.Text);
 
     WriteLn(myFile, '[Pixel]');
-    WriteLn(myFile, 'PostWebSite = ', 'http://' + edURL.Text);
+  //      WriteLn(myFile, 'PostWebSite = ', 'http://' + edURL.Text);
+    WriteLn(myFile, 'PostWebSite = ', edURL.Text);
     WriteLn(myFile, 'mac = ', SpinnersToMAC);
-    WriteLn(myFile, 'mac0 = ', seMAC6.ValueAsInt);
-    WriteLn(myFile, 'mac1 = ', seMAC5.ValueAsInt);
-    WriteLn(myFile, 'mac2 = ', seMAC4.ValueAsInt);
+    WriteLn(myFile, 'mac0 = ', '84');
+    WriteLn(myFile, 'mac1 = ', '47');
+    WriteLn(myFile, 'mac2 = ', '137');
     WriteLn(myFile, 'mac3 = ', seMAC3.ValueAsInt);
     WriteLn(myFile, 'mac4 = ', seMAC2.ValueAsInt);
     WriteLn(myFile, 'mac5 = ', seMAC1.ValueAsInt);

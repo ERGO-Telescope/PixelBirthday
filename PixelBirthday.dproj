@@ -81,7 +81,7 @@
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">3</VersionInfo>
 						<VersionInfo Name="Release">1</VersionInfo>
-						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Build">1</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -93,14 +93,14 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName">SETI Net</VersionInfoKeys>
 						<VersionInfoKeys Name="FileDescription">Pixel Birthday</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">1.3.1.0</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.3.1.1</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName">Pixel Birthday</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalCopyright">none</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks">none</VersionInfoKeys>
 						<VersionInfoKeys Name="OriginalFilename">Pixel Birthday</VersionInfoKeys>
 						<VersionInfoKeys Name="ProductName">Pixel Birthday</VersionInfoKeys>
 						<VersionInfoKeys Name="ProductVersion">1.0.1.0</VersionInfoKeys>
-						<VersionInfoKeys Name="Comments">Loss of connection fix</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">Remove http:// from server name</VersionInfoKeys>
 					</VersionInfoKeys>
 					<Excluded_Packages>
 						<Excluded_Packages Name="$(BDSBIN)\bcboffice2k150.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>

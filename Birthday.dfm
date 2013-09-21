@@ -31,7 +31,7 @@ object frmBirthday: TfrmBirthday
     ParentColor = False
     TabOrder = 0
     object btnConnect: TButton
-      Left = 17
+      Left = 18
       Top = 27
       Width = 191
       Height = 25
@@ -50,7 +50,7 @@ object frmBirthday: TfrmBirthday
       OnClick = btnConnectClick
     end
     object gbMAC: TGroupBox
-      Left = 17
+      Left = 15
       Top = 58
       Width = 279
       Height = 90
@@ -62,8 +62,8 @@ object frmBirthday: TfrmBirthday
       ParentColor = False
       TabOrder = 1
       object lblNoMAC: TLabel
-        Left = 16
-        Top = 58
+        Left = 12
+        Top = 61
         Width = 107
         Height = 15
         Caption = 'If No MAC Sticker:'
@@ -74,9 +74,48 @@ object frmBirthday: TfrmBirthday
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object lbl3MAC: TLabel
+        Left = 18
+        Top = 33
+        Width = 77
+        Height = 16
+        Caption = '54 - 2F - 89 -'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblDash1: TLabel
+        Left = 146
+        Top = 32
+        Width = 5
+        Height = 18
+        Caption = '-'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label1: TLabel
+        Left = 212
+        Top = 34
+        Width = 5
+        Height = 18
+        Caption = '-'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object btnGenerateRandom: TButton
-        Left = 129
-        Top = 53
+        Left = 160
+        Top = 58
         Width = 106
         Height = 25
         Hint = 
@@ -86,68 +125,8 @@ object frmBirthday: TfrmBirthday
         TabOrder = 0
         OnClick = btnGenerateRandomClick
       end
-      object seMAC6: TAbNumSpin
-        Left = 3
-        Top = 30
-        Width = 44
-        Height = 22
-        ColorDefault = clWindow
-        DigitsBool = 0
-        DigitsHex = 0
-        EditorEnabled = False
-        EditBase = ebHex
-        FormatStr = '$$'
-        Increment = 1.000000000000000000
-        MaxLength = 2
-        MaxValue = 255.000000000000000000
-        Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 1
-        Value = 84.000000000000000000
-        Interval = 100
-        StartDelay = 500
-      end
-      object seMAC5: TAbNumSpin
-        Left = 53
-        Top = 30
-        Width = 44
-        Height = 22
-        ColorDefault = clWindow
-        DigitsBool = 0
-        DigitsHex = 0
-        EditorEnabled = False
-        EditBase = ebHex
-        FormatStr = '$'
-        Increment = 1.000000000000000000
-        MaxLength = 2
-        MaxValue = 255.000000000000000000
-        Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 2
-        Value = 47.000000000000000000
-        Interval = 100
-        StartDelay = 500
-      end
-      object seMAC4: TAbNumSpin
-        Left = 90
-        Top = 30
-        Width = 44
-        Height = 22
-        ColorDefault = clWindow
-        DigitsBool = 0
-        DigitsHex = 0
-        EditorEnabled = False
-        EditBase = ebHex
-        FormatStr = '$'
-        Increment = 1.000000000000000000
-        MaxLength = 2
-        MaxValue = 255.000000000000000000
-        Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 3
-        Value = 137.000000000000000000
-        Interval = 100
-        StartDelay = 500
-      end
       object seMAC3: TAbNumSpin
-        Left = 140
+        Left = 101
         Top = 30
         Width = 39
         Height = 22
@@ -160,13 +139,13 @@ object frmBirthday: TfrmBirthday
         MaxLength = 2
         MaxValue = 255.000000000000000000
         Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 4
+        TabOrder = 1
         OnChange = seMAC1Change
         Interval = 100
         StartDelay = 500
       end
       object seMAC2: TAbNumSpin
-        Left = 185
+        Left = 162
         Top = 30
         Width = 44
         Height = 22
@@ -179,13 +158,13 @@ object frmBirthday: TfrmBirthday
         MaxLength = 2
         MaxValue = 255.000000000000000000
         Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 5
+        TabOrder = 2
         OnChange = seMAC1Change
         Interval = 100
         StartDelay = 500
       end
       object seMAC1: TAbNumSpin
-        Left = 230
+        Left = 223
         Top = 30
         Width = 44
         Height = 22
@@ -198,7 +177,7 @@ object frmBirthday: TfrmBirthday
         MaxLength = 2
         MaxValue = 255.000000000000000000
         Options = [eoLimitMax, eoLimitMin]
-        TabOrder = 6
+        TabOrder = 3
         OnChange = seMAC1Change
         Interval = 100
         StartDelay = 500
@@ -572,7 +551,7 @@ object frmBirthday: TfrmBirthday
         Stretch = True
       end
       object btnCreateBirthCert: TButton
-        Left = 20
+        Left = 21
         Top = 24
         Width = 139
         Height = 25
@@ -580,12 +559,11 @@ object frmBirthday: TfrmBirthday
           'Gen.|If you like the MAC & Types go ahead and create the birth c' +
           'ertificate'
         Caption = 'Create Birth Certificate'
-        Enabled = False
         TabOrder = 0
         OnClick = btnCreateBirthCertClick
       end
       object btnWriteToSD: TButton
-        Left = 19
+        Left = 20
         Top = 55
         Width = 139
         Height = 25
@@ -659,6 +637,7 @@ object frmBirthday: TfrmBirthday
         'Cancel|this is all screwed up.  Lets don'#39't do it'
         'Refresh|See if you change made it to the database')
       TabOrder = 0
+      BeforeAction = navPixelsBeforeAction
     end
     object pcBirthdaySetup: TPageControl
       Left = 2
@@ -836,6 +815,7 @@ object frmBirthday: TfrmBirthday
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnColEnter = gridPixelsColEnter
           OnDrawColumnCell = gridPixelsDrawColumnCell
         end
       end
@@ -854,7 +834,6 @@ object frmBirthday: TfrmBirthday
           Width = 50
         end>
       SimpleText = 'Status:'
-      ExplicitTop = 386
     end
   end
   object dsPixels: TDataSource
